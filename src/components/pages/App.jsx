@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
-import FoodVal from '../morecules/FoodVal';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+// import firebase from './firebase';
 
-export default function App() {
+// import Home from './Home';
+// import Profile from './Profile';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
-	const [food, setFood] = useState([
-			'apple',
-			'banana'
-		]
-    )
 
+function App() {
 	return (
-		<FoodVal food={food} />
-	)
-
+		<Router>
+			<Switch>
+				<Route exact path="/" component={SignIn} />
+				<Route path="/signin" component={SignIn} />
+				<Route path="/signup" component={SignUp} />
+				{/* <Route exact path="/" component={Home} />
+				<Route exact path="/profile" component={Profile} />
+				<Route render={() => <p>not found.</p>} /> */}
+			</Switch>
+		</Router>
+	);
 }
+
+export default App;
+
+ReactDOM.render(
+    <App />,
+  document.getElementById('root')
+);
